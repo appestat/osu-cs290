@@ -27,8 +27,16 @@ function update(data, callback) {
     });
 }
 
-function delete(data, callback) {
+function deleteBoard(data, callback) {
     conPool.execute("DELETE from boards WHERE board_id=?", [data.id], (err, results) => {
 	callback(err, results);
     });
 }
+
+module.exports = {
+    retrieveBoards : retrieve,
+    retrieveThisBoard : retrieveThisBoard,
+    insertBoard : insert,
+    updateBoard : update,
+    deleteBoard : deleteBoard
+};
