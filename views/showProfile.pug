@@ -1,0 +1,12 @@
+extends layout
+
+block content
+
+	link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+	.page-header
+		h1(style="color:orange") User Profile
+	.panel.panel-default
+		.panel-body Username: #{username}
+		.panel-body Location: #{userlocation}
+		.panel-body Photo:
+		

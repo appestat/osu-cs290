@@ -3,18 +3,18 @@ extends layout
 
 block content
 	style.
-		#match-list {
+		#data-list {
 		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 		border-collapse: collapse;
 		width: 100%;
 		}
-		#match-list td, #match-list th {
+		#data-list td, #data-list th {
 		border: 1px solid #ddd;
 		padding: 8px;
 		}
-		#match-list tr:nth-child(even){background-color: #f2f2f2;}
-		#match-list tr:hover {background-color: #ddd;}
-		#match-list th {
+		#data-list tr:nth-child(even){background-color: #f2f2f2;}
+		#data-list tr:hover {background-color: #ddd;}
+		#data-list th {
 		padding-top: 12px;
 		padding-bottom: 12px;
 		text-align: left;
@@ -23,11 +23,9 @@ block content
 		}
 	link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
 	.jumbotron
-		h1(style='text-align:center;color:orange;text-decoration:underline') Match List
-	table(id='match-list')
-			tr
-				th Match #
-				th Winner
-				th Loser
-				th Time
-				th Info
+		h1(style='text-align:center;color:orange;text-decoration:underline') User Board
+	table(id='data-list')
+		tr
+			th User
+			th Elo
+			th Winrate
