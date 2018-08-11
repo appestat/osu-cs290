@@ -1,0 +1,31 @@
+extends layout
+block content
+	style.
+		#data-list {
+		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+		}
+		#data-list td, #data-list th {
+		border: 1px solid #ddd;
+		padding: 8px;
+		}
+		#data-list tr:nth-child(even){background-color: #f2f2f2;}
+		#data-list tr:hover {background-color: #ddd;}
+		#data-list th {
+		padding-top: 12px;
+		padding-bottom: 12px;
+		text-align: left;
+		background-color: #FFA500;
+		color: white;
+		}
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+	.jumbotron
+	h1(style='text-align:center;color:orange;text-decoration:underline') Boards
+	table(id='data-list')
+		tr
+			th Board Title 
+		each board in boards 
+			tr
+				td #[a(href="../boards/" + board.board_id) #{board.name}]
+			       
