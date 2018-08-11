@@ -22,7 +22,7 @@ function insert(data, callback) {
 
 
 function update(data, callback) {
-    conPool.query("update games set winner=?, loser=?, time=?, info=? where board_id=?", [data.winner, data.loser, data.time, data.info], (err, results) => {
+    conPool.query("update games set winner=?, loser=?, time=?, info=? where match_id=?", [data.winner, data.loser, data.time, data.info, data.id], (err, results) => {
 	callback(err, results);
     });
 }
