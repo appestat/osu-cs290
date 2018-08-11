@@ -1,0 +1,43 @@
+extends layout
+
+
+block content
+	style.
+		#match-list {
+		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+		}
+		#match-list td, #match-list th {
+		border: 1px solid #ddd;
+		padding: 8px;
+		}
+		#match-list tr:nth-child(even){background-color: #f2f2f2;}
+		#match-list tr:hover {background-color: #ddd;}
+		#match-list th {
+		padding-top: 12px;
+		padding-bottom: 12px;
+		text-align: left;
+		background-color: #FFA500;
+		color: white;
+		}
+	link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+	nav.navbar.navbar-default
+		.container-fluid
+			.navbar-header
+				a.navbar-brand(href='#') Scoreboard
+			ul.nav.navbar-nav
+				li.active
+					a(href='/') Home
+				li
+					a(href='/showBoard') User Board
+
+	.jumbotron
+		h1(style='text-align:center;color:orange;text-decoration:underline') Match List
+	table(id='match-list')
+			tr
+				th Match #
+				th Winner
+				th Loser
+				th Time
+				th Info
