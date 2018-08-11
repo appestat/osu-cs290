@@ -1,6 +1,6 @@
 var db = require('mysql2');
 const config = require('../config/dbCredentials.json');
-var conpool = db.createPool(config);
+var conPool = db.createPool(config);
 
 
 function retrieve(callback) {
@@ -9,7 +9,7 @@ function retrieve(callback) {
     });
 };
 function retrieveThisGame(data, callback) {
-    conPool.query("select winner, loser, time, info from games where match_id = ?", [match.id], (err, results) => {
+    conPool.query("select winner, loser, create_time, info from games where match_id=?", [data.id], (err, results) => {
 	callback(err, results);
     });
 }
@@ -38,5 +38,5 @@ module.exports = {
     retrieveThisGame : retrieveThisGame,
     insertGame : insert,
     updateGame : update,
-    deleteGame : deleteBoard
+    deleteGame : deleteGame
 };

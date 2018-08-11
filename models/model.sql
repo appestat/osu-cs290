@@ -20,6 +20,8 @@ CREATE TABLE game (
     match_id INT(10) PRIMARY KEY AUTO_INCREMENT,
     create_time DATETIME,
     info varchar(300)
+    winner INT(10) REFERENCES users(user_id),
+    loser INT(10) REFERENCES users(user_id)
     );
 CREATE TABLE users_game (
     user_id INT(10) REFERENCES users(user_id),
