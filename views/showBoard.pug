@@ -1,6 +1,4 @@
 extends layout
-
-
 block content
 	style.
 		#data-list {
@@ -21,12 +19,17 @@ block content
 		background-color: #FFA500;
 		color: white;
 		}
-	link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
 	.jumbotron
-		h1(style='text-align:center;color:orange;text-decoration:underline') User Board
-		p(style='text-align:center;color:gray') Board: #{boardname} 
+	h1(style='text-align:center;color:orange;text-decoration:underline') User Board
+	p(style='text-align:center;color:gray') Board: #{boardname} 
 	table(id='data-list')
 		tr
 			th User
 			th Elo
 			th Winrate
+		each user in users
+			tr
+				td #{user.name}
+				td #{user.elo}
+				td #{user.winrate}

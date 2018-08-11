@@ -1,6 +1,6 @@
 var db = require('mysql2');
 const config = require('../config/dbCredentials.json');
-var conpool = db.createPool(config);
+var conPool = db.createPool(config);
 
 
 function retrieve(callback) {
@@ -9,7 +9,7 @@ function retrieve(callback) {
     });
 };
 function retrieveThisBoard(data, callback) {
-    conPool.query("select name, games from boards where board=id = ?", [data.id], (err, results) => {
+    conPool.query("select name, games from boards where board_id=?", [data.id], (err, results) => {
 	callback(err, results);
     });
 }

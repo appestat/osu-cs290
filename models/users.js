@@ -1,6 +1,6 @@
 var db = require('mysql2');
 const config = require('../config/dbCredentials.json');
-var conpool = db.createPool(config);
+var conPool = db.createPool(config);
 
 
 function retrieve(callback) {
@@ -27,12 +27,18 @@ function deleteUser(data, callback) {
 	callback(err, results);
     });
 }
-		  
+
+function getUsersFromBoard(data, callback) {
+    conPool.execute("SELECT users.name, users.elo from users WHERE users.board=?", [data.id], (err, results) => {
+	callback(err, results);
+    });
+}
 		 
 module.exports = {
     retrieveUser : retrieve,
     insertUser : insert,
     updateUser : update,
-    deleteUser : deleteUser
+    deleteUser : deleteUser,
+    getUsersFromBoard: getUsersFromBoard
 }
     
