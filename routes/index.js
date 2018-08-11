@@ -4,6 +4,12 @@ var matchModel = require('../models/games.js');
 var boardModel = require('../models/boards.js');
 var userModel = require('../models/users.js');
 /* GET home page. */
+router.get('/boards', function(req, res, next) {
+    boardModel.retrieveBoards((err, results) => {
+	if (err) throw err;
+	res.render('boardList', {boards: results});
+    });
+});
 router.get('/boards/:id', function(req, res, next) {
     boardModel.retrieveThisBoard({id: req.params.id},(err, results) => {
 	if (err) throw err;
