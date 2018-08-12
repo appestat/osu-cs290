@@ -13,7 +13,11 @@ function retrieveThisGame(data, callback) {
 	callback(err, results);
     });
 }
-    
+function getGamesFromBoard(data, callback) {
+    conPool.query("select w.name as winner, l.name as loser, games.create_time, games.info FROM games INNER JOIN users w ON w.user_id = winner INNER JOIN users l ON l.user_id = loser WHERE games.board = ?", [data.id], (err, results) => {
+	callback(err, results);
+    });
+}
 function insert(data, callback) {
     conPool.query("insert into games (winner, loser, time, info) values (?, ?, ?, ?)",[data.winner, data.loser, data.time, data.info], (err, results) => {
  	callback(err, results);
@@ -38,5 +42,6 @@ module.exports = {
     retrieveThisGame : retrieveThisGame,
     insertGame : insert,
     updateGame : update,
-    deleteGame : deleteGame
+    deleteGame : deleteGame,
+    getGamesFromBoard : getGamesFromBoard
 };

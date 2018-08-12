@@ -41,3 +41,9 @@ block content
 				th Loser
 				th Time
 				th Info
+			each match in matches
+				tr
+					td #{match.winner}
+					td #{match.loser}
+					td #{match.create_time}
+					td #{match.info}

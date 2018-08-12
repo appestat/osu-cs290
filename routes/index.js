@@ -21,6 +21,13 @@ router.get('/boards/:id', function(req, res, next) {
     });
 });
 
+router.get('/boards/:id/matches', function(req, res, next) {
+    matchModel.getGamesFromBoard({id: req.params.id}, (err, results) => {
+	console.log(results);
+	res.render('showMatches', {matches: results});
+    });
+});
+
 //router.get('match/:id', function
 			       
 
