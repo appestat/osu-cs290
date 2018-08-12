@@ -1,0 +1,9 @@
+extends layout
+block content
+	form(method="POST", action="/boards/create")
+		input(type='text', name='title', value='')
+		input(type='number', name='default_elo', value="1500")
+		input(type='number', name='default_rd', value="0.8")
+		input(type='number', name='default_vol', value="35")
+		input(type='number', name='tau', value="35")
+		input(type='submit', value='Create Board')
