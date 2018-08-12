@@ -1,0 +1,22 @@
+block content
+    h3 Edit game in #{boardname}
+    // will need model/sql function to retrieve board name from board_id
+    // unless we can pass a whole object to the pug template?
+
+    // bellow assumes "editGame" is a ROUTER POST path
+    // that can use board_id to place it correctly.
+    form(method="POST", action="../editGame") 
+        input(type='hidden', name='board', value=board)
+        .form-group
+            label(for="Winner") Winner:
+            input#ONID.form-control( name="winner",required, default=match.winner)
+        .form-group
+            label(for="Loser") Loser:
+            input#Name.form-control( name="loser",required, default=match.loser)
+        .form-group
+            label(for="Info") Additional information:
+            // additional info is NOT required, be prepared to handle that in SQL
+            input#Team.form-control( name="info", default=match.info)
+        <hr>
+        .form-group
+            button.btn.btn-primary(type="submit") Submit
