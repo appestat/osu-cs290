@@ -14,6 +14,23 @@ router.get('/boards', function(req, res, next) {
 router.get('/boards/create', function(req, res, next) {
     res.render('createBoard');
 });
+
+router.get('/boards/:id/adduser', function(req, res, next) {
+    res.render('createUser', {id: req.params.id});
+});
+
+router.post('/boards/:id/adduser', function(req, res, next) {
+    boardModel.retrieveThisBoard({id: req.params.id}, (err, board) => {
+	if(err) throw err;
+	console.log(board[0].defaultElo);
+	userModel.insertUser({name: req.body.name, elo: board[0].defaultElo, rd: board[0].defaultRD, vol: board[0].defaultVol, board_id: req.params.id}, (err, newUser) =>
+			     {
+				 if(err) throw err;
+				 res.redirect('/boards/' + req.params.id);
+			     });
+    });
+});
+
 router.get('/boards/:id', function(req, res, next) {
     boardModel.retrieveThisBoard({id: req.params.id},(err, results) => {
 	if (err) throw err;
@@ -26,7 +43,8 @@ router.get('/boards/:id', function(req, res, next) {
 });
 
 router.post('/boards/create', function(req, res, next) {
-    boardModel.insertBoard({title: req.body.title, defualt_elo: req.body.default_elo, default_rd: req.body.default_rd, vol: req.body.vol, tau: req.body.tau}, (err, results) => {
+    console.log(req.body);
+    boardModel.insertBoard({title: req.body.title, default_elo: req.body.default_elo, default_rd: req.body.default_rd, default_vol: req.body.vol, tau: req.body.tau}, (err, results) => {
 	if(err) throw err;
 	console.log(results);
 	res.redirect('/boards/' + results.insertId);
@@ -39,6 +57,7 @@ router.get('/boards/:id/matches', function(req, res, next) {
 	res.render('showMatches', {matches: results});
     });
 });
+
 
 router.get('/', function(req, res, next) {
     res.render('home');

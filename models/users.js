@@ -10,7 +10,7 @@ function retrieve(callback) {
 };
 
 function insert(data, callback) {
-    conPool.query("insert into users(profile, elo, RD, VOL, board) values (?, ?, ?, ?, ?)",[data.profile, data.elo, data.rd, data.vol, data.board_id], (err, results) => {
+    conPool.query("insert into users(name, elo, RD, VOL, board) values (?, ?, ?, ?, ?)",[data.name, data.elo, data.rd, data.vol, data.board_id], (err, results) => {
 	callback(err, results);
     });
 }

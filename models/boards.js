@@ -9,20 +9,20 @@ function retrieve(callback) {
     });
 };
 function retrieveThisBoard(data, callback) {
-    conPool.query("select name, games, board_id from boards where board_id=?", [data.id], (err, results) => {
+    conPool.query("select * from boards where board_id=?", [data.id], (err, results) => {
 	callback(err, results);
     });
 }
     
 function insert(data, callback) {
-    conPool.query("insert into boards(title, default_elo, default_rd, default_vol, tau) values (?, ?, ?, ?, ?)",[data.title, data.default_elo, data.default_rd, data.default_vol, data.tau], (err, results) => {
+    conPool.query("insert into boards(name, defaultElo, defaultRD, defaultVol, tau) values (?, ?, ?, ?, ?)",[data.title, data.default_elo, data.default_rd, data.default_vol, data.tau], (err, results) => {
  	callback(err, results);
     });
 }
 
 
 function update(data, callback) {
-    conPool.query("update boards set title=?, default_elo=?, default_rd=?, default_vol=?, tau=? where board_id=?", [data.title, data.default_elo, data.default_rd, data.default_vol, data.tau], (err, results) => {
+    conPool.query("update boards set name=?, defaultElo=?, defaultRD=?, defaultVol=?, tau=? where board_id=?", [data.title, data.default_elo, data.default_rd, data.default_vol, data.tau], (err, results) => {
 	callback(err, results);
     });
 }
