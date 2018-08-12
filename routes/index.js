@@ -16,7 +16,7 @@ router.get('/boards/:id', function(req, res, next) {
 	console.log(results);
 	userModel.getUsersFromBoard({id: req.params.id}, (err, results2) => {
 	    console.log(results2);
-	    res.render('showBoard', {boardname: results[0].name, users: results2});
+	    res.render('showBoard', {board: results[0], users: results2});
 	});
     });
 });

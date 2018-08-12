@@ -9,7 +9,7 @@ function retrieve(callback) {
     });
 };
 function retrieveThisBoard(data, callback) {
-    conPool.query("select name, games from boards where board_id=?", [data.id], (err, results) => {
+    conPool.query("select name, games, board_id from boards where board_id=?", [data.id], (err, results) => {
 	callback(err, results);
     });
 }
