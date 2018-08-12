@@ -1,0 +1,21 @@
+block content
+    h3 Create a new game in board #{board.name}
+    // this works for 'variables' in URL path?
+
+    // bellow assumes "insertGame" is a ROUTER POST path
+    // this pug template also has the board_id passed to it ("board"), need to pass that on too
+    form(method="POST", action="../insertGame") 
+        input(type='hidden', name='board', value=board)
+        .form-group
+            label(for="Winner") Winner:
+            input#ONID.form-control(name="winner",required, default=match.winner)
+        .form-group
+            label(for="Loser") Loser:
+            input#Name.form-control(name="loser",required, default=match.loser)
+        .form-group
+            label(for="Info") Additional information:
+            // additional info is NOT required, be prepared to handle that in SQL
+            input#Team.form-control(name="info", default=match.info)
+        <hr>
+        .form-group
+            button.btn.btn-primary(type="submit") Submit
