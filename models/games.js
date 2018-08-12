@@ -14,7 +14,7 @@ function retrieveThisGame(data, callback) {
     });
 }
 function getGamesFromBoard(data, callback) {
-    conPool.query("select w.name as winner, l.name as loser, games.create_time, games.info FROM games INNER JOIN users w ON w.user_id = winner INNER JOIN users l ON l.user_id = loser WHERE games.board = ?", [data.id], (err, results) => {
+    conPool.query("select w.name as winner, l.name as loser, games.create_time, games.info, games.match_id FROM games INNER JOIN users w ON w.user_id = winner INNER JOIN users l ON l.user_id = loser WHERE games.board = ?", [data.id], (err, results) => {
 	callback(err, results);
     });
 }
