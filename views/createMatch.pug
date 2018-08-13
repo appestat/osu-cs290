@@ -1,0 +1,12 @@
+extends layout
+	
+block content
+	form#aform(method="POST", action="/boards/" + id + "/addmatch")
+		input(type='text', name='info', value='')
+		input(type='submit', value="Add match")
+	select(name="winner", form="aform")
+		each user in users
+			option(value=user.user_id) #{user.name}
+	select(name="loser", form="aform")
+		each user in users
+			option(value=user.user_id) #{user.name}
