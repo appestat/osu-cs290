@@ -24,7 +24,9 @@ block content
 		h1(style='text-align:center;color:orange;text-decoration:underline') User Board
 		p(style='text-align:center;color:gray') Board: #{board.name}
 		div(style='text-align:center')
-			a(href=board.board_id + '/matches') Match List
+			a(href=board.board_id + '/matches') Match List 
+			a(href=board.board_id + '/adduser') Add a user 
+			a(href=board.board_id + '/addmatch') Report results of a match
 	table(id='data-list')
 		tr
 			th User
