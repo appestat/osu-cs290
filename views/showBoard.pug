@@ -19,14 +19,46 @@ block content
 		background-color: #FFA500;
 		color: white;
 		}
-		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+	style.
+		#board_changes {
+		margin-right: 20px;
+		margin-left: 20px;
+		padding: 0;
+		list-style-type: none;
+		overflow: hidden;
+	
+		text-align: center;
+		-webkit-border-radius:10px;
+		-moz-border-radius:10px;
+		border-radius:10px;
+		}
+
+		#board_changes li {
+		display: inline-block;
+		margin-left: 30px;
+		margin-top: auto;
+		}
+	link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+	nav.navbar.navbar-default
+		.container-fluid
+			.navbar-header
+				a.navbar-brand(href='#') Scoreboard
+			ul.nav.navbar-nav
+				li
+					a(href='/') Home
+				li
+					a(href='/boards') Board List
 	.jumbotron
 		h1(style='text-align:center;color:orange;text-decoration:underline') User Board
 		p(style='text-align:center;color:gray') Board: #{board.name}
 		div(style='text-align:center')
-			a(href=board.board_id + '/matches') Match List 
-			a(href=board.board_id + '/adduser') Add a user 
-			a(href=board.board_id + '/addmatch') Report results of a match
+			ul(id='board_changes')
+				li
+					a(href=board.board_id + '/matches') Match List 
+				li
+					a(href=board.board_id + '/adduser') Add a user 
+				li
+					a(href=board.board_id + '/addmatch') Report results of a match
 	table(id='data-list')
 		tr
 			th User

@@ -1,6 +1,18 @@
 extends layout
 	
 block content
+
+	link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+	nav.navbar.navbar-default
+		.container-fluid
+			.navbar-header
+				a.navbar-brand(href='#') Scoreboard
+			ul.nav.navbar-nav
+				li
+					a(href='/') Home
+				li
+					a(href='/boards') Board List
+
 	form#aform(method="POST", action="/boards/" + id + "/addmatch")
 		input(type='text', name='info', value='')
 		input(type='submit', value="Add match")
