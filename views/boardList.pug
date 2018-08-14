@@ -20,12 +20,32 @@ block content
 		color: white;
 		}
 		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+	script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
 	.jumbotron
 	h1(style='text-align:center;color:orange;text-decoration:underline') Boards
 	table(id='data-list')
 		tr
 			th Board Title 
-		each board in boards 
-			tr
-				td #[a(href="../boards/" + board.board_id) #{board.name}]
-			       
+	button(type="button" class="btn btn-primary" onclick="getNextBoards()") Next
+	script.
+		var currentIdx = 0;
+		function getNextBoards()
+		{
+		    console.log(currentIdx);
+		    $.ajax({url: "/getBoardsRange",
+			    data: "currentIdx="+currentIdx,
+			    dataType: 'json',
+			    success: function(data) {
+			    $.each(data, function(i, item)
+				{
+				var $tr = $('<tr>').append($('<td>').append($('<a>').text(item.name).attr("href", "/boards/" + item.board_id))).appendTo('#data-list')
+				}
+			    );
+			}
+			}
+			);
+			currentIdx = currentIdx + 10;
+		}
+		$(document).ready(function() {
+		     getNextBoards()
+		});

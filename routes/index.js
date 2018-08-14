@@ -8,7 +8,7 @@ var glicko = require('glicko2')
 router.get('/boards', function(req, res, next) {
     boardModel.retrieveBoards((err, results) => {
 	if (err) throw err;
-	res.render('boardList', {boards: results});
+	res.render('boardList', {boards: []});
     });
 });
 
@@ -70,7 +70,7 @@ router.post('/boards/:id/adduser', function(req, res, next) {
 });
 
 router.get('/boards/:id', function(req, res, next) {
-    boardModel.retrieveThisBoard({id: req.params.id},(err, results) => {
+    boardModel.retrieveThisBoard({id: req.params.id}, (err, results) => {
 	if (err) throw err;
 	console.log(results);
 	userModel.getUsersFromBoard({id: req.params.id}, (err, results2) => {
@@ -79,7 +79,17 @@ router.get('/boards/:id', function(req, res, next) {
 	});
     });
 });
+router.get('/getBoardsRange', function(req, res, next) {
+    console.log(req.query.currentIdx);
+    idx = parseInt(req.query.currentIdx);
+    boardModel.retrieveTenBoards(idx, (err, results) => {
 
+	if (err) throw err;
+	console.log(results);
+	res.send(results);
+    });
+});
+	
 router.post('/boards/create', function(req, res, next) {
     console.log(req.body);
     boardModel.insertBoard({title: req.body.title, default_elo: req.body.default_elo, default_rd: req.body.default_rd, default_vol: req.body.default_vol, tau: req.body.tau}, (err, results) => {

@@ -8,6 +8,15 @@ function retrieve(callback) {
 	    callback(err, results);
     });
 };
+
+function retrieveTenBoards(idx, callback) {
+    conPool.query("select * from boards LIMIT ?, 10", [idx], (err, results) => {
+	console.log(idx);
+	console.log(results);
+	callback(err, results);
+    });
+}
+    
 function retrieveThisBoard(data, callback) {
     conPool.query("select * from boards where board_id=?", [data.id], (err, results) => {
 	callback(err, results);
@@ -27,6 +36,7 @@ function update(data, callback) {
     });
 }
 
+
 function deleteBoard(data, callback) {
     conPool.execute("DELETE from boards WHERE board_id=?", [data.id], (err, results) => {
 	callback(err, results);
@@ -38,5 +48,6 @@ module.exports = {
     retrieveThisBoard : retrieveThisBoard,
     insertBoard : insert,
     updateBoard : update,
-    deleteBoard : deleteBoard
+    deleteBoard : deleteBoard,
+    retrieveTenBoards : retrieveTenBoards
 };
