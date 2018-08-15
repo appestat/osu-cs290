@@ -12,8 +12,8 @@ router.get('/boards', function(req, res, next) {
     });
 });
 
-router.get('/geolocation', function(req, res, next) {
-    res.render('geolocation');
+router.get('/geo', function(req, res, next) {
+    res.render('home');
 });
 
 router.get('/boards/create', function(req, res, next) {
