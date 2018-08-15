@@ -1,5 +1,6 @@
 extends layout
 block content
+
 	style.
 		#data-list {
 		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -19,11 +20,22 @@ block content
 		background-color: #FFA500;
 		color: white;
 		}
-		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
-	script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+	
+	link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+	
+	nav.navbar.navbar-default
+		.container-fluid
+				.navbar-header
+					a.navbar-brand(href='#') Scoreboard
+				ul.nav.navbar-nav
+					li
+						a(href='/') Home
+					li.active
+						a(href='/showBoard') Board List
 	.jumbotron
 	h1(style='text-align:center;color:orange;text-decoration:underline') Boards
 	a(href="/boards/create") Create Board
+	script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
 	table(id='data-list')
 		tr
 			th Board Title 
@@ -50,3 +62,6 @@ block content
 		$(document).ready(function() {
 		     getNextBoards()
 		});
+
+
+
