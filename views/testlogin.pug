@@ -4,7 +4,7 @@ block content
 	link(rel='stylesheet', href='/stylesheets/login.css')
 
 	.container
-		if err
+		if errors
 			each error in err
 				p(class='alert alert-danger' role='alert') #{error.msg}
 		a(href='/register') Don't have an account?
