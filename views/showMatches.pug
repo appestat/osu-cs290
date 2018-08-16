@@ -39,6 +39,8 @@ block content
 				th Winner
 				th Loser
 				th Time
+				th Longitude
+				th Latitude
 				th Info
 			each match in matches
 				tr
@@ -46,4 +48,6 @@ block content
 					td #{match.winner}
 					td #{match.loser}
 					td #{match.create_time}
+					td #{match.longitude}
+					td #{match.latitude}
 					td #{match.info}

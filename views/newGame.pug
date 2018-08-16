@@ -6,6 +6,8 @@ block content
     // this pug template also has the board_id passed to it ("board"), need to pass that on too
     form(method="POST", action="../insertGame") 
         input(type='hidden', name='board', value=board)
+        input(type='hidden', name='longitude', value='43.0')
+        input(type='hidden', name='latitude', value='43.0')
         .form-group
             label(for="Winner") Winner:
             input#ONID.form-control(name="winner",required, default=match.winner)

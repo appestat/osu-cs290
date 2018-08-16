@@ -7,6 +7,8 @@ block content
     // that can use board_id to place it correctly.
     form(method="POST", action="../editGame") 
         input(type='hidden', name='board', value=board)
+        input(type='hidden', name='longitude', value='43.0')
+        input(type='hidden', name='latitude', value='43.0')  
         .form-group
             label(for="Winner") Winner:
             input#ONID.form-control( name="winner",required, default=match.winner)

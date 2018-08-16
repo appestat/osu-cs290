@@ -17,14 +17,13 @@ router.get('/boards', function(req, res, next) {
 	res.render('boardList', {boards: []});
     });
 });
-
 // added for login
 router.get('/login', function(req,res) {
 	if (req.isAuthenticated()) {
 		res.redirect('/');
 	}
 	else {
-		res.render('login');
+		res.render('testlogin');
 	}
 });
 
@@ -49,11 +48,11 @@ router.get('/logout',function(req,res){
 	req.logout(); //This comes with passport
 	req.session.destroy();
 	res.redirect('/');
-});    
+});
 
 // added for login; copied from passport example
 router.post('/register',function (req,res,next){
-  
+
 	//validating inputs using express-validator
 	req.checkBody('displayname','Display name field cannot be empty').notEmpty();
 	req.checkBody('displayname','Display name must be between 2-15 characters long.').len(2,15);
@@ -66,8 +65,8 @@ router.post('/register',function (req,res,next){
 	req.checkBody("password", "Password must include one lowercase character, one uppercase character, a number, and a special character.").matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,}$/, "i");
 	req.checkBody('passwordMatch', 'Password must be between 8-100 characters long.').len(8, 100);
 	req.checkBody('passwordMatch', 'Passwords do not match, please try again.').equals(req.body.password);
-  
-	const errors = req.validationErrors(); 
+
+	const errors = req.validationErrors();
 	if(errors) {
 	  console.log('errors:'+JSON.stringify(errors));
 	  res.render('register', { title: 'Registration Error',errors:errors })
@@ -91,7 +90,7 @@ router.post('/register',function (req,res,next){
 
 	  bcrypt.hash(password, saltRounds, function(err, hash) {
 		// Store hash in your password DB.
-	  
+
 	  // will not require email
 	  conPool.query('INSERT into users(name,username,password) values(?,?,?)',[displayname,username,hash],function(err,results,fields){
 		if(err) throw err;
@@ -108,7 +107,7 @@ router.post('/register',function (req,res,next){
 	  })
 	});
 	}
-	
+
 	//res.render('index', { title: 'Registration Complete' });
   })
 
@@ -122,9 +121,9 @@ passport.deserializeUser(function(user_id, done) {
 
 	done(null, user_id);
 });
- 
+
 // added for login
-function authenticationMiddleware () {  
+function authenticationMiddleware () {
 	return (req, res, next) => {
 		console.log(`req.session.passport.user: ${JSON.stringify(req.session.passport)}`);
 
@@ -132,8 +131,6 @@ function authenticationMiddleware () {
 		res.redirect('/login')
 	}
 }
-
-
 
 router.get('/boards/create', function(req, res, next) {
 	console.log(req.user); // added for login
@@ -201,7 +198,8 @@ router.post('/boards/:id/addmatch', function(req, res, next) {
 	else {
 		res.redirect('/login');
 	}
- 
+
+
 }); // ayy lmao
 
 router.post('/boards/:id/adduser', function(req, res, next) {
@@ -241,7 +239,7 @@ router.get('/getBoardsRange', function(req, res, next) {
 	res.send(results);
     });
 });
-	
+
 router.post('/boards/create', function(req, res, next) {
 	if (req.isAuthenticated()) {
 		console.log(req.body);
@@ -270,7 +268,7 @@ router.get('/', function(req, res, next) {
 });
 
 //router.get('match/:id', function
-			       
+
 
 
 module.exports = router;
