@@ -40,10 +40,12 @@ router.post('/boards/:id/addmatch', function(req, res, next) {
 		ranking.updateRatings([[winnerPlayer, loserPlayer, 1]]);
 		console.log(winnerPlayer.getRating());
 		console.log(loserPlayer.getRating());
+		// Add geolocation
 		matchModel.insertGame({winner: req.body.winner, loser: req.body.loser, info: req.body.info, board_id: req.params.id}, (err, result) => {
 		    console.log(result);
 		    if(err) throw err;
 		});
+		//
 		userModel.updateUser({elo: winnerPlayer.getRating(), rd: winnerPlayer.getRd(), vol: winnerPlayer.getVol(), user_id: winner[0].user_id}, (err, result) => {
 		    if(err) throw err;
 		});
