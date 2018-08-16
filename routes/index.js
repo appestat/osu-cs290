@@ -24,7 +24,7 @@ router.get('/login', function(req,res) {
 		res.redirect('/');
 	}
 	else {
-		res.render('login');
+		res.render('testlogin');
 	}
 });
 
