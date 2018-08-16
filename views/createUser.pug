@@ -1,5 +1,16 @@
 extends layout
 block content
+
+	link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+	nav.navbar.navbar-default
+		.container-fluid
+			.navbar-header
+				a.navbar-brand(href='#') Scoreboard
+			ul.nav.navbar-nav
+				li
+					a(href='/') Home
+				li
+					a(href='/boards') Board List
 	form(method="POST", action="/boards/" + id +"/adduser")
 		input(type='text', name='name', value='')
 		input(type='submit', value='Add User')

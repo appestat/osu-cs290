@@ -14,7 +14,7 @@ var glicko = require('glicko2');
 router.get('/boards', function(req, res, next) {
     boardModel.retrieveBoards((err, results) => {
 	if (err) throw err;
-	res.render('boardList', {boards: results});
+	res.render('boardList', {boards: []});
     });
 });
 
@@ -231,7 +231,17 @@ router.get('/boards/:id', function(req, res, next) {
 		res.redirect('/login');
 	}
 });
+router.get('/getBoardsRange', function(req, res, next) {
+    console.log(req.query.currentIdx);
+    idx = parseInt(req.query.currentIdx);
+    boardModel.retrieveTenBoards(idx, (err, results) => {
 
+	if (err) throw err;
+	console.log(results);
+	res.send(results);
+    });
+});
+	
 router.post('/boards/create', function(req, res, next) {
 	if (req.isAuthenticated()) {
 		console.log(req.body);

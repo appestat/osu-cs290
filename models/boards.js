@@ -38,5 +38,6 @@ module.exports = {
     retrieveThisBoard : retrieveThisBoard,
     insertBoard : insert,
     updateBoard : update,
-    deleteBoard : deleteBoard
+    deleteBoard : deleteBoard,
+    retrieveTenBoards : retrieveTenBoards
 };
