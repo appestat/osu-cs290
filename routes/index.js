@@ -44,7 +44,7 @@ router.post('/boards/:id/addmatch', function(req, res, next) {
 		ranking.updateRatings([[winnerPlayer, loserPlayer, 1]]);
 		console.log(winnerPlayer.getRating());
 		console.log(loserPlayer.getRating());
-		matchModel.insertGame({winner: req.body.winner, loser: req.body.loser, info: req.body.info, board_id: req.params.id}, (err, result) => {
+		matchModel.insertGame({winner: req.body.winner, loser: req.body.loser, info: req.body.info, board_id: req.params.id,longitude:req.params.longitude,latitude: req.params.latitude}, (err, result) => {
 		    console.log(result);
 		    if(err) throw err;
 		});
