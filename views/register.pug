@@ -2,7 +2,11 @@ extends layout
 
 block content
 	link(rel='stylesheet', href='/stylesheets/login.css')
+
 	.container
+		if errors
+			each error in err
+				p(class='alert alert-danger' role='alert') #{error.msg}
 		a(href='/login') Already have an account?
 		h1 Register Account
 		form#join-us(method='POST', action='../login')
