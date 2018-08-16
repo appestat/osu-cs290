@@ -2,7 +2,11 @@ extends layout
 
 block content
 	link(rel='stylesheet', href='/stylesheets/login.css')
+
 	.container
+		if err
+			each error in err
+				p(class='alert alert-danger' role='alert') #{error.msg}
 		a(href='/register') Create Acount
 		h1 Scoreboard Login
 		form#join-us(method='POST', action='../login')
@@ -12,5 +16,6 @@ block content
 				br
 				span
 					input(name='password', placeholder='Password', type='password')
+				br
 			.submit
-				input.submit(value='Submit', type='button')
+				input.submit(value='Submit', type='submit')
