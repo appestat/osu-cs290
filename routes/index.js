@@ -262,6 +262,13 @@ router.get('/boards/:id/matches', function(req, res, next) {
     });
 });
 
+router.get('/boards/:id/matches/map', function(req, res, next) {
+    console.log("HELLO");
+    matchModel.getGamesFromBoard({id: req.params.id}, (err, results) => {
+	console.log(results);
+	res.render('map', {matches: results});
+    });
+});
 
 router.get('/', function(req, res, next) {
     res.render('home');

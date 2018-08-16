@@ -26,26 +26,14 @@ block content
 			option(value=user.user_id) #{user.name}
 	script.
 							function geoFindMe() {
-					    
 					      if (!navigator.geolocation){
 					        return;
 					      }
-					    
 					      function success(position) {
 									var form = document.getElementById("aform");
 									document.getElementById("lat").value = position.coords.latitude;
 					        document.getElementById("long").value = position.coords.longitude;
-					    
-					        //output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
-					    
-					      ;
 					      }
-					    
-					      function error() {
-					        
-					      }
-					    
-					    
 					      navigator.geolocation.getCurrentPosition(success, error);
 								console.log("Hello");
 					    }
