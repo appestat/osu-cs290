@@ -19,8 +19,8 @@ function getGamesFromBoard(data, callback) {
     });
 }
 function insert(data, callback) {
-    console.log(data);
-    conPool.query("insert into games (winner, loser, info, board, longitude, latitude) values (?, ?, ?, ?, ?, ?)",[data.winner, data.loser, data.info, data.board_id, data.latitude, data.longitude], (err, results) => {
+    conPool.query("insert into games (winner, loser, info, board, longitude, latitude) values (?, ?, ?, ?, ?, ?)",[data.winner, data.loser, data.info, data.board_id, data.longitude, data.latitude], (err, results) => {
+
  	callback(err, results);
     });
 }

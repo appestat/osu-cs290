@@ -37,7 +37,8 @@ function getUsersFromBoard(data, callback) {
 	callback(err, results);
     });
 }
-		 
+
+
 module.exports = {
     retrieveUser : retrieve,
     insertUser : insert,
@@ -46,4 +47,6 @@ module.exports = {
     getUsersFromBoard: getUsersFromBoard,
     getThisUser: getThisUser
 }
+
     
+// module.exports = conPool;

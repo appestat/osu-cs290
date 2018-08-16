@@ -11,19 +11,23 @@ block content
 					a(href='/') Home
 				li
 					a(href='/boards') Board List
+				if isAuthenticated
+					li
+						a(href='/logout') Log out
+				if !isAuthenticated
+					li
+						a(href='/login') Log In
+					li
+						a(href='/register') Register
 	.jumbotron
 		h1(style='text-align:center;color:orange;text-decoration:underline') Home
 
 	h1 Introduction:
-
+	p Scoreboard is a web app that allows you to rank you and and your friends using a powerful algorithm so you can figure out who is the best at anything! 
+	p All you have to do is create a new board, and add your friends to it. Then, you can report results of matches, and your rankings will be updated after each report!
 
 	h3 Glicko2 :
-
-	a(href="http://www.glicko.net/glicko/glicko2.pdf") www.glicko.net 
-
-
-	h3 TrueSkill:
-
-	a(href="http://trueskill.org/") trueskill.org
-				
-	
+	p 
+	|we use the 
+	a(href="http://www.glicko.net/glicko/glicko2.pdf") glicko2
+	| algorithm to calculate user rankings. Glicko2 works best for single-player games of skill, like chess, ping-pong, or badminton.

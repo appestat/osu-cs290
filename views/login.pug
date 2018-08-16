@@ -1,0 +1,14 @@
+block content
+    h3 Login
+    if errors
+        each error in errors
+            div(class='alert alert-danger' role='alert') #{error.msg}
+    form(method="POST", action="../login") 
+        .form-group
+            label(for="username") Username:
+            input.form-control(name="username",required, autocomplete='off')
+        .form-group
+            label(for="password") Password:
+            input.form-control(name="password",required, autocomplete='off', type='password')
+        .form-group
+            button.btn.btn-primary(type="submit") Submit
