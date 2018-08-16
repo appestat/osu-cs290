@@ -11,6 +11,14 @@ block content
 					a(href='/') Home
 				li
 					a(href='/boards') Board List
+				if isAuthenticated
+					li
+						a(href='/logout') Log out
+				if !isAuthenticated
+					li
+						a(href='/login') Log In
+					li
+						a(href='/register') Register
 	.jumbotron
 		h1(style='text-align:center;color:orange;text-decoration:underline') Home
 

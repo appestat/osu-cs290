@@ -19,7 +19,7 @@ function getGamesFromBoard(data, callback) {
     });
 }
 function insert(data, callback) {
-    conPool.query("insert into games (winner, loser, info, board) values (?, ?, ?, ?)",[data.winner, data.loser, data.info, data.board_id], (err, results) => {
+    conPool.query("insert into games (winner, loser, info, board, longitude, latitude) values (?, ?, ?, ?, ?, ?)",[data.winner, data.loser, data.info, data.board_id, data.longitude, data.latitude], (err, results) => {
  	callback(err, results);
     });
 }
