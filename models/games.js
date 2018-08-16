@@ -23,7 +23,13 @@ function insert(data, callback) {
  	callback(err, results);
     });
 }
-
+function retrieveTenBoards(idx, callback) {
+    conPool.query("select * from boards LIMIT ?, 10", [idx], (err, results) => {
+	console.log(idx);
+	console.log(results);
+	callback(err, results);
+    });
+}
 
 function update(data, callback) {
     conPool.query("update games set winner=?, loser=?, time=?, info=? where match_id=?", [data.winner, data.loser, data.time, data.info, data.id], (err, results) => {
