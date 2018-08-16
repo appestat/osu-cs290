@@ -7,7 +7,7 @@ block content
 		if err
 			each error in err
 				p(class='alert alert-danger' role='alert') #{error.msg}
-		a(href='/register') Create Acount
+		a(href='/register') Don't have an account?
 		h1 Scoreboard Login
 		form#join-us(method='POST', action='../login')
 			.fields
