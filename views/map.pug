@@ -1,26 +1,30 @@
 extend layout
 
 block content
-  style.
-    #map{
-      width:100%;
-      height:700px;
-      background-color:red;
-    }
-  body
-    div(id="map")
-  script.
-            function createMap(){
-              var mapOptions = {
-                zoom: 1,
-                mapTypeId: google.maps.MapTypeId.HYBRID,
-                center: new google.maps.LatLng(0,0)
-              } 
-              var map = new google.maps.Map(document.getElementById("map"), mapOptions);    
-              var marker = new google.maps.Marker({position:{lat:50,lng:50}, map: map});
-              for(m of matches){
-              var marker = new google.maps.Marker({position:{lat:m.latitude,lng:m.longitude}, map: map});
-              }
-            }  
-            window.onload=createMap;
-  script(aync defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJZ5scfMufOInUJdWMkp3Hr6pyxCDUU_M&callback=myMap" type="text/javascript")
+	style.
+		#map{
+		width:100%;
+		height:700px;
+		background-color:red;
+		}
+	body
+		div(id="map")
+		script.
+			var ms = !{JSON.stringify(matches)};
+			function createMap(){
+			var mapOptions = {
+				zoom: 1,
+				mapTypeId: google.maps.MapTypeId.HYBRID,
+				center: new google.maps.LatLng(0,0)
+			} 
+				var markers = [];
+				var map = new google.maps.Map(document.getElementById("map"), mapOptions); 
+				console.log(ms);
+				for(let m of ms) {
+				        console.log(parseFloat(m.latitude));
+					console.log(parseFloat(m.longitude));
+					markers.push(new google.maps.Marker({position:{lat:parseFloat(m.latitude),lng:parseFloat(m.longitude)}, map: map}));
+				}  
+				window.onload=createMap;
+				}
+		script(aync defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJZ5scfMufOInUJdWMkp3Hr6pyxCDUU_M&callback=createMap" type="text/javascript")

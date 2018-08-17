@@ -30,9 +30,13 @@ block content
 					        return;
 					      }
 					      function success(position) {
+					      console.log(position.coords.latitude);
+					      console.log(position.coords.longitude);
 									var form = document.getElementById("aform");
 									document.getElementById("lat").value = position.coords.latitude;
 					        document.getElementById("long").value = position.coords.longitude;
+					      } 
+					      function error(position) {
 					      }
 					      navigator.geolocation.getCurrentPosition(success, error);
 								console.log("Hello");
