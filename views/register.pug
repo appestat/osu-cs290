@@ -1,20 +1,27 @@
+extends layout
+
 block content
-    h3 Register #{title}
-    if errors
-        each error in errors
-            div(class='alert alert-danger' role='alert') #{error.msg}
-    form(method="POST", action="../register") 
-        .form-group
-            label(for="displayname") Display name:
-            input.form-control(name="displayname",required, autocomplete='off')
-        .form-group
-            label(for="username") Username:
-            input.form-control(name="username",required, autocomplete='off')
-        .form-group
-            label(for="password") Password:
-            input.form-control(name="password",required, autocomplete='off', type='password')
-        .form-group
-            label(for="passwordMatch") Confirm password:
-            input.form-control(name="passwordMatch",required,autocomplete='off', type='password')
-        .form-group
-            button.btn.btn-primary(type="submit") Submit
+	link(rel='stylesheet', href='/stylesheets/login.css')
+
+	.container
+		if errors
+			each error in err
+				p(class='alert alert-danger' role='alert') #{error.msg}
+		a(href='/login') Already have an account?
+		h1 Register Account
+		form#join-us(method='POST', action='../login')
+			.fields
+				span
+					input(name='displayname', placeholder='Display Name', type='text')
+				br
+				span
+					input(name='username', placeholder='Username', type='text')
+				br
+				span
+					input(name='password', placeholder='Password', type='password')
+				br
+				span
+					input(name='passwordMatch', placeholder='Retype Password', type='password')
+				br
+			.submit
+				input.submit(value='Submit', type='submit')

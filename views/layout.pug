@@ -1,7 +1,62 @@
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    style.
+      #data-list {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      }
+      #data-list td, #data-list th {
+      border: 1px solid #ddd;
+      padding: 8px;
+      }
+      #data-list tr:nth-child(even){background-color: #f2f2f2;}
+      #data-list tr:hover {background-color: #ddd;}
+      #data-list th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #FFA500;
+      color: white;
+      }
+      #board_changes {
+      margin-right: 20px;
+      margin-left: 20px;
+      padding: 0;
+      list-style-type: none;
+      overflow: hidden;
+    
+      text-align: center;
+      -webkit-border-radius:10px;
+      -moz-border-radius:10px;
+      border-radius:10px;
+      }
+
+      #board_changes li {
+      display: inline-block;
+      margin-left: 30px;
+      margin-top: auto;
+      }
+      
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    
+    nav.navbar.navbar-default
+      .container-fluid
+          .navbar-header
+            a.navbar-brand(href='#') Scoreboard
+          ul.nav.navbar-nav
+            li
+              a(href='/') Home
+            li  
+              a(href='/boards') Board List
+            if isAuthenticated
+              li
+                a(href='/logout') Log out
+            if !isAuthenticated
+              li
+                a(href='/login') Log In
+              li
+                a(href='/register') Register
   body
     block content
