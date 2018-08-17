@@ -258,7 +258,7 @@ router.get('/boards/:id/matches', function(req, res, next) {
     console.log("HELLO");
     matchModel.getGamesFromBoard({id: req.params.id}, (err, results) => {
 	console.log(results);
-	res.render('showMatches', {matches: results});
+	res.render('showMatches', {matches: results, id:req.params.id});
     });
 });
 
